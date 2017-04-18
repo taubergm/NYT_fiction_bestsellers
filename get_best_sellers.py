@@ -13,16 +13,9 @@ def parse_books(book_list, date):
     for i in book_list['results']['books']:
         dic = {}
         dic['age_group'] = i['age_group']
-        #if i['amazon_product_url'] is not None:
-        #    dic['amazon_product_url'] = i['amazon_product_url'].encode("utf8")
-        #dic['asterisk'] = i['asterisk']
         dic['author'] = i['author'].encode("utf8")        
-        #dic['book_image'] = i['book_image'].encode("utf8")
-        #dic['book_image_height'] = i['book_image_height']
-        #dic['book_image_width'] = i['book_image_width']
         dic['book_review_link'] = i['book_review_link'].encode("utf8")
         dic['contributor'] = i['contributor'].encode("utf8")
-        #dic['contributor_note'] = i['contributor_note'].encode("utf8")
         dic['dagger'] = i['dagger']
         dic['first_chapter_link'] = i['first_chapter_link'].encode("utf8")
         dic['price'] = i['price']
@@ -32,12 +25,11 @@ def parse_books(book_list, date):
         dic['sunday_review_link'] = i['sunday_review_link'].encode("utf8")
         dic['title'] = i['title'].encode("utf8")
         dic['weeks_on_list'] = i['weeks_on_list']
-        # add a date so that we know when it was a best-seller
-        dic['date'] = date
+        dic['date'] = date  # add a date so that we know when it was a best-seller
         books.append(dic)
     return(books) 
 
-#eg: https://api.nytimes.com/svc/books/v3/lists/2017-03-13/Combined%20Print%20and%20E-Book%20Fiction.json?api_key=13d664889d584dbab46fcf8baa54ef20
+#sample request: https://api.nytimes.com/svc/books/v3/lists/2017-03-13/Combined%20Print%20and%20E-Book%20Fiction.json?api_key=<your_api_key>
 BOOKS_ROOT = "https://api.nytimes.com/svc/books/v3/lists"
 LIST = "Combined%20Print%20and%20E-Book%20Fiction.json"   #you can change to other lists available at https://developer.nytimes.com
 
